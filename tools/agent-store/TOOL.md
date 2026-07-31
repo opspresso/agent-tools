@@ -1,10 +1,18 @@
 ---
 name: agent-store
-description: 기업용 MCP 정보/데이터 모음
+description: "Korean public and corporate data through one gateway: filings and financials, BOK and KOSIS statistics, legislation, procurement, real estate."
 url: https://agent.store/mcp
 ---
 
 # agent-store
 
-Needs an `X-API-Key` header. Sync registers the entry without it — add the key in
-the console after the first sync, or the server answers unauthenticated.
+Two ways in. OAuth is the documented default and the server carries dynamic
+client registration (`https://agent.store/oauth/register`, scopes `mcp` and
+`offline_access`), so the console's Discover step is enough to set the entry up —
+nothing to register by hand. An `X-API-Key` header still works where the browser
+flow is impractical.
+
+Sync creates the entry with neither. Run Discover after the first sync, or paste
+the key in the console.
+
+Connection docs: https://agent.store/docs/connect

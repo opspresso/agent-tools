@@ -15,15 +15,19 @@ tools/
 
 ```markdown
 ---
-name: mcp-url-fetch
-description: 웹 페이지를 가져와 마크다운으로 변환
-url: http://mcp-url-fetch.agent-mcps.svc.cluster.local:8080/mcp
+name: url-fetch
+description: "Fetch a URL as usable content: images as bytes, documents (HTML, PDF, CSV, JSON) as text."
+url: http://mcp-url-fetch.agent-mcps.svc.cluster.local/mcp
 ---
 
-# mcp-url-fetch
+# url-fetch
 
 운영 메모를 마크다운으로 적어요. 콘솔에만 보이고 모델에는 전달되지 않아요.
 ```
+
+`tools/url-fetch/TOOL.md`를 그대로 옮긴 예시예요. `name`은 디렉터리 이름과 같아야
+하고, Service 이름(`mcp-url-fetch`)과 다를 수 있어요 — 엔트리 이름은 슬러그, 주소는
+배포가 정하는 것이라서요.
 
 - `url`은 필수예요. 없으면 등록할 대상이 없으므로 건너뛰고 사유를 보고해요.
 - `description`은 **한 줄**로 써요. 모델의 시스템 프롬프트에서 "Connected MCP Servers"
@@ -53,3 +57,8 @@ main에 머지하고 Sync 버튼을 누르면 **아직 등록되지 않은 이�
 `*.svc.cluster.local` 같은 사설 주소는 Agent Studio 배포의
 `MCP_INTERNAL_HOST_SUFFIXES`에 해당 네임스페이스 suffix가 들어 있어야 등록돼요.
 없으면 SSRF 가드가 거절하고, sync 결과에 사유와 함께 표시돼요.
+
+**포트는 Service 포트예요.** 컨테이너 포트가 아니에요. `agent-mcps` 차트의 세 서버는
+모두 Service `port: 80`으로 받아 각자의 `targetPort`(url-fetch·memory 3000,
+grafana 8000)로 넘기니까, 주소에는 포트를 적지 않아요. 컨테이너 포트를 그대로 적으면
+Service에 없는 포트라 연결되지 않아요.

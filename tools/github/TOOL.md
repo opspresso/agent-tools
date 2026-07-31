@@ -1,6 +1,6 @@
 ---
 name: github
-description: GitHub official MCP server
+description: "Work with GitHub: repositories and code search, issues, pull requests, Actions and security alerts."
 url: https://api.githubcopilot.com/mcp/
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: notion
-description: Notion MCP Server
+description: "Search and edit a Notion workspace: pages, databases, comments and users."
 url: https://mcp.notion.com/mcp
 ---
 
