@@ -59,6 +59,7 @@ main에 머지하고 Sync 버튼을 누르면 **아직 등록되지 않은 이�
 없으면 SSRF 가드가 거절하고, sync 결과에 사유와 함께 표시돼요.
 
 **포트는 Service 포트예요.** 컨테이너 포트가 아니에요. `mcp-*` 차트(서버마다
-하나)의 네 서버는 모두 Service `port: 80`으로 받아 각자의 `targetPort`(url-fetch·
-memory 3000, grafana 8000, kubernetes 8080)로 넘기니까, 주소에는 포트를 적지
-않아요. 컨테이너 포트를 그대로 적으면 Service에 없는 포트라 연결되지 않아요.
+하나)의 다섯 서버는 모두 Service `port: 80`으로 받아 각자의 `targetPort`(url-fetch·
+memory 3000, grafana 8000, kubernetes·brave-search 8080)로 넘기니까, 주소에는
+포트를 적지 않아요. 컨테이너 포트를 그대로 적으면 Service에 없는 포트라 연결되지
+않아요.
