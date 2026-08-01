@@ -11,8 +11,9 @@ depends on `MCP_INTERNAL_HOST_SUFFIXES` naming that suffix. Without it the sync
 reports this entry as `invalid-url` and moves on.
 
 No credential on the entry: nothing routes to the Service from outside the
-cluster, and upstream reads its own Grafana token from the pod's environment
-(`GRAFANA_SERVICE_ACCOUNT_TOKEN`) rather than from the caller.
+cluster, and upstream authenticates to Grafana itself with basic auth from the
+pod's environment (`GRAFANA_USERNAME`/`GRAFANA_PASSWORD`) rather than from the
+caller.
 
 What the entry actually exposes is a deployment question, not a repository one:
 upstream ships far more tool categories than it enables, and the rest come from
