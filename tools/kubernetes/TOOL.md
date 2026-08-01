@@ -19,7 +19,7 @@ on the pod drops every mutating tool before it is listed, and the
 ServiceAccount's RBAC grants get/list/watch with core `secrets` deliberately
 excluded. `--toolsets core` follows from that exclusion — helm stores releases
 in Secrets, so its toolset would only ever answer 403. Widening what this entry
-can see means changing those flags and rules in argocd-env-demo's `agent-mcps`
-chart, not this file.
+can see means changing those flags and rules in argocd-env-demo's
+`mcp-kubernetes` chart, not this file.
 
 Upstream: https://github.com/containers/kubernetes-mcp-server
