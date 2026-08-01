@@ -14,9 +14,7 @@ No credential on the entry: nothing routes to the Service from outside the
 cluster, and upstream authenticates to the Brave Search API with `BRAVE_API_KEY`
 from the pod's environment (External Secrets, parameter-store) rather than from
 the caller. Brave has no hosted MCP endpoint — self-hosting is the only
-official path, which is why this runs in-cluster unlike tavily.
-
-Overlaps tavily on web search; this entry exists for Brave's independent index.
+official path, which is why this runs in-cluster.
 
 What the entry exposes is a deployment question, not a repository one: the
 deployment runs upstream's default tool set — all eight, verified against the
