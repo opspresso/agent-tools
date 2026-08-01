@@ -19,8 +19,9 @@ official path, which is why this runs in-cluster unlike tavily.
 Overlaps tavily on web search; this entry exists for Brave's independent index.
 
 What the entry exposes is a deployment question, not a repository one: the
-deployment runs upstream's default tool set (web, image, video, news, local,
-summarizer), and trimming it is `BRAVE_MCP_ENABLED_TOOLS`/`DISABLED_TOOLS` on
+deployment runs upstream's default tool set — all eight, verified against the
+running pod: web, image, video, news, local and place search, summarizer, and
+LLM context — and trimming it is `BRAVE_MCP_ENABLED_TOOLS`/`DISABLED_TOOLS` on
 the pod. Plan matters more than the list: local search and summarizer are gated
 by the API key's Brave plan, and on a Free key they still list but fail at call
 time — that shows up as tool errors, not a registration problem.
