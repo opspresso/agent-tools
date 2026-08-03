@@ -7,6 +7,8 @@ description: >
 url: http://mcp-memory.agent-mcps.svc.cluster.local/mcp
 ---
 
+# memory
+
 Cluster-internal (`agent-mcps` namespace, no ingress), so it is reachable only
 because `MCP_INTERNAL_HOST_SUFFIXES` declares that suffix. No credential:
 nothing routes to the Service from outside.
