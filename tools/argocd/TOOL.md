@@ -35,10 +35,17 @@ terminates at the gateway.
 
 The write tools are listed because `MCP_READ_ONLY` is left unset, but what they
 can actually do is Argo CD's own RBAC, not anything this entry decides. The
-token belongs to the `mcp` account, which argocd-env-addons grants `role:mcp`:
-applications (get, create, update, delete, sync and resource actions), their
-logs, and read-only projects and clusters. Nothing else — repositories,
-accounts, exec and the RBAC itself stay out of reach, so widening what a run may
-do means editing that policy rather than this file.
+token belongs to the `mcp` account, and `role:mcp` in argocd-env-addons bounds
+its writes to applications alone — create, update, delete, sync and resource
+actions. Nothing else is writable, and `exec` is granted by neither that role
+nor the default one.
+
+Reads are wider than that role suggests, deliberately: the deployment keeps
+`policy.default: role:readonly`, and Argo CD's built-in definition of that role
+is `get` on applications, applicationsets, certificates, clusters,
+repositories, projects, accounts, gpgkeys and logs. Every account inherits it,
+this one included. So `role:mcp` narrows what a run may change, not what it may
+see — narrowing the latter would take explicit deny rules, which Argo CD
+evaluates ahead of allows.
 
 Upstream: https://github.com/argoproj-labs/mcp-for-argocd
