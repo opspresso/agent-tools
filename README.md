@@ -92,12 +92,12 @@ main에 머지하고 Sync 버튼을 누르면 **아직 등록되지 않은 이�
 `internal`)은 거부되고, IP 리터럴은 어떤 suffix에도 매칭되지 않아요.
 
 **포트는 Service 포트예요.** 컨테이너 포트가 아니에요. `mcp-*` 차트(서버마다 하나)의
-여섯 서버는 모두 Service `port: 80`으로 받아 각자의 `targetPort`로 넘기니까, 주소에는
+일곱 서버는 모두 Service `port: 80`으로 받아 각자의 `targetPort`로 넘기니까, 주소에는
 포트를 적지 않아요. 컨테이너 포트를 그대로 적으면 Service에 없는 포트라 연결되지
 않아요.
 
 | 서버 | targetPort |
 |---|---|
-| url-fetch, memory, youtube | 3000 |
+| url-fetch, memory, youtube, argocd | 3000 |
 | grafana | 8000 |
 | kubernetes, brave-search | 8080 |
